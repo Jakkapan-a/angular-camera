@@ -1,0 +1,22 @@
+<div class="camera-container">
+  <video #videoElement autoplay></video>
+  <canvas #canvasElement width="640" height="480"></canvas>
+  <div class="buttons">
+    <!-- <button *ngFor="let device of videoDevices" (click)="startCamera(device.deviceId)">
+      เลือกกล้อง {{ device.label || 'ไม่ทราบชื่อกล้อง' }}
+    </button> -->
+    <div>
+      <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars" (change)="changeCamera($event.target)">
+        @for(item of videoDevices; track item.deviceId)
+        {
+          <option value="{{item.deviceId}}">{{item.label || 'ไม่ทราบชื่อกล้อง'}}</option>
+        }
+      </select>
+    </div>
+    <button (click)="captureImage()">Capture</button>
+    <button (click)="stopCamera()">Stop Camera</button>
+    <button (click)="startCamera()">Start Camera</button>
+    <button (click)="openFullScreen()">Open Full Screen</button>
+  </div>
+</div>
